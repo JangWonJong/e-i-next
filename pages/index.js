@@ -1,14 +1,9 @@
-import { Layout } from '@/components'
-import { useEffect } from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
-import tableStyles from '../styles/Home.module.css'
+import { Layout, Home } from '@/components'
+import React, {useEffect} from 'react';
 
 export default function HomePage() {
   
-
-  return (
+return (
     <Home/>
-      
-  )
+)
 }

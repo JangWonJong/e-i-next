@@ -3,18 +3,20 @@ import { loginRequest, logincancelled, logoutRequest } from "@/modules/auth/logi
 import { connect } from "react-redux"
 import React,{useState} from 'react'
 import { useDispatch } from "react-redux"
+import { useRouter } from "next/router"
 
 const LoginPage =()=>{
     const [user, setUser] =useState({
         userid:'', password:''
     })
+    const router = useRouter()
     const dispatch = useDispatch()
     
     const onSubmit = e => {
         e.preventDefault()
         alert('userlogin'+JSON.stringify(user))
         dispatch(loginRequest(user))
-        window.location.href = '/'
+        router.push('/user/profile')
     }
     const onChange = e =>{
         e.preventDefault()
