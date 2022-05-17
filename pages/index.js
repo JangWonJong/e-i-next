@@ -4,6 +4,8 @@ import React, {useEffect} from 'react';
 export default function HomePage() {
   
 return (
-    <Home/>
+    <Layout>
+     <Home/>
+    </Layout>
 )
 }

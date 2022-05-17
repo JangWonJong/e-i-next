@@ -1,38 +1,38 @@
-import { Login } from "@/components/auth/Login"
-import { loginRequest, logincancelled, logoutRequest } from "@/modules/auth/login"
-import { connect } from "react-redux"
-import React,{useState} from 'react'
-import { useDispatch } from "react-redux"
-import { useRouter } from "next/router"
+import {Login} from "@/components/auth/Login"
+import {loginRequest, logincancelled, logoutRequest} from "@/modules/auth/login"
+import {connect, useSelector} from "react-redux"
+import React, {useCallback, useState} from 'react'
+import {useDispatch} from "react-redux"
+import {useRouter} from "next/router"
+import {Profile} from "@/components"
 
-const LoginPage =()=>{
-    const [user, setUser] =useState({
-        userid:'', password:''
-    })
+const LoginPage = () => {
+    const [user, setUser] = useState({userid: '', password: ''})
     const router = useRouter()
     const dispatch = useDispatch()
-    
+    const {isLoggined, loginUser} = useSelector(state => state.login)
+   
     const onSubmit = e => {
         e.preventDefault()
-        alert('userlogin'+JSON.stringify(user))
+        alert('userlogin' + JSON.stringify(user))
         dispatch(loginRequest(user))
-        router.push('/user/profile')
+        //router.push('/user/profile') 이동시 데이터 소실
     }
-    const onChange = e =>{
+    
+    const onChange = e => {
         e.preventDefault()
-        const{name, value} = e.target;
-        setUser({...user,[name]: value})
+        const {name, value} = e.target;
+        setUser({...user, [name]: value})
     }
-    
-    
-    return(
-        <Login onSubmit={onSubmit} onChange={onChange}/>
+
+    return (
+        isLoggined
+            ? <Profile loginUser={loginUser}/>
+            : <Login onSubmit={onSubmit} onChange={onChange}/>
     )
 }
 
-const mapStateToProps = state => ({isLoggined: state.login.isLoggined})
-const loginActions = {loginRequest, logincancelled, logoutRequest}
+const mapStateToProps = state => ({loginUser: state.login.loginUser})
+const loginActions = {loginRequest, logoutRequest}
 
-export default connect(
-   mapStateToProps, loginActions
-)(LoginPage)
+export default connect(mapStateToProps, loginActions)(LoginPage)
