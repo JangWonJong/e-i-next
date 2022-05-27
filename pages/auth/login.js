@@ -7,7 +7,7 @@ import {useRouter} from "next/router"
 import {Profile} from "@/components"
 
 const LoginPage = () => {
-    const [user, setUser] = useState({userid: '', password: ''})
+    const [user, setUser] = useState({username: '', password: ''})
     const router = useRouter()
     const dispatch = useDispatch()
     const {isLoggined, loginUser} = useSelector(state => state.login)

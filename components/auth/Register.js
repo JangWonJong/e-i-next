@@ -44,10 +44,10 @@ export function Register({onChange, onSubmit}){
               <Grid item xs={12} sm={6} >
                 <TextField
                   autoComplete="given-name"
-                  name="userid"
+                  name="username"
                   required
                   fullWidth
-                  id="userid"
+                  id="username"
                   label="사용자 ID"
                   autoFocus
                   onChange={onChange}
@@ -87,40 +87,8 @@ export function Register({onChange, onSubmit}){
                   onChange={onChange}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="phone"
-                  label="전화번호"
-                  type="phone"
-                  id="phone"
-                  autoComplete="new-password"
-                  onChange={onChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="birth"
-                  label="생년월일"
-                  type="birth"
-                  id="birth"
-                  onChange={onChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                name="adress"
-                label="주소"
-                type="adress"
-                id="adress"
-                onChange={onChange}
-              />
-            </Grid>
+              
+              
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}

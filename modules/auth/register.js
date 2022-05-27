@@ -3,7 +3,7 @@ import {call, delay, put, takeLatest, select, throttle} from 'redux-saga/effects
 import {HYDRATE} from 'next-redux-wrapper';
 import axios from 'axios';
 
-const SERVER = 'http://127.0.0.1:5000'
+const SERVER = 'http://127.0.0.1:8080'
 const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT fefege..."
@@ -41,7 +41,7 @@ function* signup(action) {
     console.log('Recent Value')
 }
 const registerApi = payload => axios.post(
-    `${SERVER}/user/join`,
+    `${SERVER}/users/join`,
     payload,
     {headers}
 )
